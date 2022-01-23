@@ -5,7 +5,7 @@ import SliderForm from './SliderForm';
 
 const Slider = () => {
     return (
-        <div className="slider">
+        <div className="slider" >
 
 
             <Container >

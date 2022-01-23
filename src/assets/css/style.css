@@ -6,6 +6,7 @@
     --color2:#4a80ee;
     --color3: #003297;
     --color4: #cecece;
+    --color5: #251313;
 --color1-transparent-15: rgba(0,76,229,0.15);
 
 
@@ -27,6 +28,30 @@ body{
     background-color:var(--color2);
     border-color: var(--color2);
 }
+/*** Section Title*****/
+
+.section-title{
+    text-align: center;
+  
+    display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction:column;
+  position: relative;
+}
+
+.section-title h2{
+font-weight: 900;
+color: var(--color5);
+}
+
+.section-title span{
+    display: inline-block;
+    width: 10rem;
+    height: 0.7rem;
+    background-color: var(--color1);
+}
+
 
 
 /*** TopBar*****/
@@ -106,4 +131,11 @@ body{
         
     
     }
+ 
+
 }
+   /*******Customer Service Card************/
+.customer-service-card .icon{
+color:var(--color2);
+font-size:4rem;
+   }
