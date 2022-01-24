@@ -10,7 +10,7 @@ const CustomerServices = () => {
         <Container>
             <SectionTitle title="Customer Services" />
             <Row className = "g-5">
-                {services.map((service =><Col md={6}>
+                {services.map((service =><Col md={6} key={service.id}>
                     <CustomerServiceCard title={service.title} 
                     description={service.description} 
                     icon={service.icon} />
