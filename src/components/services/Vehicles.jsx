@@ -21,7 +21,7 @@ const Vehicles = () => {
 
             <Row>
                 <Col lg={3}>
-                    <Dropdown size="lg" className="vehiclesDropdown">
+                    <Dropdown size="lg" className="d-lg-none vehicleDropDown">
                         <Dropdown.Toggle className="w-100">
                         {vehicles[activeVehicle].image}
                         </Dropdown.Toggle>
@@ -39,7 +39,7 @@ const Vehicles = () => {
                     </Dropdown>
 
 
-                    <ul className="vehicleList">
+                    <ul className="vehicleList d-none d-lg-block">
                         <li><Button onClick={() => handleStartIndex(startIndex - 1)} disabled={startIndex <= 0}>
                             <FiChevronUp /> </Button></li>
 
