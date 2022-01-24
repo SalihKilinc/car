@@ -1,51 +1,48 @@
 /*** GENERAL SETTING*****/
 
 :root {
-
     --color1: #004ce5;
-    --color2:#4a80ee;
+    --color2: #4a80ee;
     --color3: #003297;
     --color4: #cecece;
     --color5: #251313;
---color1-transparent-15: rgba(0,76,229,0.15);
-
-
+    --color1-transparent-15: rgba(0, 76, 229, 0.15);
 }
 
-
-body{
+body {
     font-family: "Roboto", sans-serif;
-    padding:0;
-    margin:0;
-
+    padding: 0;
+    margin: 0;
 }
+
 .btn-primary {
-    background-color:var(--color1);
+    background-color: var(--color1);
     border-color: var(--color1);
 }
 
 .btn-primary:hover {
-    background-color:var(--color2);
+    background-color: var(--color2);
     border-color: var(--color2);
 }
+
+
 /*** Section Title*****/
 
-.section-title{
+.section-title {
     text-align: center;
-  
     display: flex;
-  justify-content:center;
-  align-items: center;
-  flex-direction:column;
-  position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 
-.section-title h2{
-font-weight: 900;
-color: var(--color5);
+.section-title h2 {
+    font-weight: 900;
+    color: var(--color5);
 }
 
-.section-title span{
+.section-title span {
     display: inline-block;
     width: 10rem;
     height: 0.7rem;
@@ -53,22 +50,22 @@ color: var(--color5);
 }
 
 
-
 /*** TopBar*****/
 
-.topbar{
+.topbar {
     background-color: var(--color4);
     padding: 0.5em;
 }
 
-.topbar ul{
+.topbar ul {
     list-style-type: none;
-    display:flex;
-    margin:0;
+    display: flex;
+    margin: 0;
     padding: 0;
-    justify-content:flex-end;
+    justify-content: flex-end;
 }
-.topbar ul li{
+
+.topbar ul li {
     padding-left: 1rem;
 }
 
@@ -79,65 +76,98 @@ color: var(--color5);
     border-bottom: 2px solid var(--color2);
 }
 
-
 .menubar .navbar-nav a:hover {
-   color: var(--color2) important;
+    color: var(--color2) important;
 }
+
 
 /*** SLIDER*****/
 
-.slider{
-    background-color: var(--color1-transparent-15 )
+.slider {
+    background-color: var(--color1-transparent-15)
 }
-.slider .carousel-caption{
+
+.slider .carousel-caption {
     top: 0;
     left: 0;
     text-align: left;
-
 }
 
 .slider .carousel-control-next,
-.slider .carousel-control-prev{
-    top:auto;
+.slider .carousel-control-prev {
+    top: auto;
     bottom: 5px;
 }
 
-.slider .carousel-control-prev{
+.slider .carousel-control-prev {
     right: 35px;
-    left:auto;
+    left: auto;
 }
-.slider form{
+
+.slider form {
     background-color: white;
-    padding:2rem;
+    padding: 2rem;
     border-radius: 0.2rem;
-}.slider .input-group-text{
-    font-size:0.8rem;
 }
-.slider .row{
-    align-items:center;
+
+.slider .input-group-text {
+    font-size: 0.8rem;
 }
+
+.slider .row {
+    align-items: center;
+}
+
+
 /***** MenuBar*************/
-.menubar .navbar-nav{
+
+.menubar .navbar-nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
 }
 
 @media (max-width: 450px) {
-    .menubar .navbar-nav{
+    .menubar .navbar-nav {
         flex-direction: column;
-        
-        
-    
     }
- 
-
 }
-   /*******Customer Service Card************/
-.customer-service-card .icon{
-color:var(--color2);
-font-size:4rem;
-   }
 
-   /*******Vehicle List************/
+
+/*******Customer Service Card************/
+
+.customer-service-card .icon {
+    color: var(--color2);
+    font-size: 4rem;
+}
+
+
+/*******Vehicle************/
+
+.vehicleList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.vehicleList li {
+    background-color: var(--color4);
+    padding: 0.7rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1px;
+}
+
+.vehicleList li.active{
+    background-color: var(--color2);
+}
+
+.vehicleList li:first-child,
+.vehicleList li:last-child {
+    padding: 0;
+}
+
+.vehicleList li button {
+    width: 100%;
+}

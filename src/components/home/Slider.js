@@ -11,14 +11,14 @@ const Slider = () => {
             <Container >
                 <Row>
 
-                    <Col lg={{span:7, order:"last"}}>   
-                    <SliderCarousel/>
-                     </Col>
+                    <Col lg={{ span: 7, order: "last" }}>
+                        <SliderCarousel />
+                    </Col>
 
-                    <Col lg={{span:5, order:"first"}}>   
-                    
-                    <SliderForm/>
-                       </Col>
+                    <Col lg={{ span: 5, order: "first" }}>
+
+                        <SliderForm />
+                    </Col>
 
                 </Row>
 

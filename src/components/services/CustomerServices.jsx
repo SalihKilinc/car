@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import SectionTitle from '../common/SectionTitle'
 import CustomerServiceCard from './CustomerServiceCard';
 import services from "../../data/services"
-import { GiCalendar } from 'react-icons/gi';
+
 
 const CustomerServices = () => {
     return (
