@@ -1,30 +1,30 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Footer from './components/common/Footer'
 import MenuBar from './components/common/MenuBar'
-import Spacer from './components/common/Spacer'
 import TopBar from './components/common/TopBar'
-import Slider from './components/home/Slider'
-import CustomerServices from './components/services/CustomerServices'
-import Vehicles from './components/services/Vehicles'
+import HomePage from './pages/HomePage'
+import ServicesPage from './pages/ServicesPage'
 
 
 
 
 const App = () => {
   return (
-    <div>
- <TopBar/>
- <MenuBar/>
-<Slider/>
-<Spacer/>
-<CustomerServices/>
-<Spacer/>
-<Vehicles/>
-<Spacer/>
-<Footer/>
+    <BrowserRouter>
 
-      
-    </div>
+      <TopBar />
+      <MenuBar />
+      <Routes>
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/" element={<HomePage />} />
+
+      </Routes>
+
+      <Footer />
+
+
+    </BrowserRouter>
   )
 }
 
