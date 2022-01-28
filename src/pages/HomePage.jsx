@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from '../components/home/Slider'
 import CustomerServices from '../components/services/CustomerServices'
 import Vehicles from '../components/services/Vehicles'
-import NewsletterPanel from '../components/common/contact/NewsletterPanel'
+import NewsletterPanel from '../components/contact/NewsletterPanel'
 import Spacer from '../components/common/Spacer'
 
 

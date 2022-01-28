@@ -1,39 +1,30 @@
-import React from 'react';
-import SectionTitle from "../common/SectionTitle";
-import { Container, Row, Col, Image } from 'react-bootstrap';
-import partnerList from '../../data/partners';
+import React from 'react'
+import { Container, Row, Col, Image } from 'react-bootstrap'
+import SectionTitle from '../common/SectionTitle'
+import partnerList from "../../data/partners";
 
 const Partners = () => {
-  return(
-<Container>
-<SectionTitle title="Our Partners" />
-<Row>
-<Col xs={12}> 
-Lorem ipsum dolor
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa repellendus 
-aliquid fugiat necessitatibus, laboriosam omnis 
-magni dolor doloribus dolorum aperiam eius
- totam veniam saepe, nobis tenetur alias consequatur ipsum sequi!
- Lorem ipsum dolor
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa repellendus 
-aliquid fugiat necessitatibus, laboriosam omnis 
-magni dolor doloribus dolorum aperiam eius
- totam veniam saepe, nobis tenetur alias consequatur ipsum sequi!
-
-</Col>
-
-
-<Col>
-
-
-
-</Col>
-
-
-</Row>
-
-</Container>
-  ) 
+    return (
+        <Container>
+            <SectionTitle title="Our Partners"/>
+            <Row>
+                <Col>
+          To contribute to positive change and achieve our sustainability goals,
+          we partner with many extraordinary organizations around the world.
+          Their expertise enables us to do far more than we could alone, and
+          their passion and talent inspire us. It is our pleasure to introduce
+          you to a handful of the organizations whose accomplishments and
+          commitments are representative of all the organizations we are
+          fortunate to call our partners.
+                </Col>
+            </Row>
+            <Row className="mt-3">
+                {partnerList.map((partner,index)=><Col key={index}>
+                <Image src={require(`../../assets/img/partners/${partner.image}`).default} alt={partner.title} className="img-fluid"/>
+                </Col>)}
+            </Row>
+        </Container>
+    )
 }
 
-export default Partners;
+export default Partners
