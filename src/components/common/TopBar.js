@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import {FiPhoneCall, FiYoutube,FiFacebook,FiTwitter,FiInstagram,FiUser} from "react-icons/fi"
+import { Link } from 'react-router-dom'
 
 const TopBar = () => {
     return (
@@ -22,7 +23,7 @@ const TopBar = () => {
 
                     <li>
 
-                        <Button size="sm">
+                        <Button as={Link} size="sm" to="/login">
                             <FiUser/> Login
                         </Button>
                     </li>
