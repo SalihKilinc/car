@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Container, Row, Col, Form, Button, Card ,Spinner} from "react-bootstrap"
 import {useFormik} from "formik";
 import * as Yup from "yup";
-
+import {Link} from "react-router-dom"
 
 const LoginForm = () => {
 
@@ -68,6 +68,7 @@ const formik = useFormik({
                                     {loading &&  <Spinner animation="border" size="sm" />}
                                     Login
                                 </Button>
+                                <Link to="register"> Create new user </Link>
                             </Form>
                         </Card.Body>
                     </Card>

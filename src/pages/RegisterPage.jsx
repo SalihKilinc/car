@@ -6,7 +6,7 @@ import Spacer from '../components/common/Spacer';
 const RegisterPage = () => {
   return (
       <>
-      <PageHeader title ="Register"/>
+      <PageHeader title="Register"/>
       <Spacer/>
       <RegisterForm/>
       <Spacer/>
