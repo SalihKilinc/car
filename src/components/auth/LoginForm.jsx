@@ -1,31 +1,31 @@
-import React, {useState} from 'react';
-import { Container, Row, Col, Form, Button, Card ,Spinner} from "react-bootstrap"
-import {useFormik} from "formik";
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button, Card, Spinner } from "react-bootstrap"
+import { useFormik } from "formik";
 import * as Yup from "yup";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const LoginForm = () => {
 
-    const [loading,setLoading] =useState(false);
+    const [loading, setLoading] = useState(false);
 
 
-const initialValues = {
-    email:"",
-    password:""
-}
+    const initialValues = {
+        email: "",
+        password: ""
+    }
 
-const validationSchema = Yup.object({
-    email:Yup.string().email().required("Please enter your e mail s'il vous plait"),
-    password: Yup.string().required("Please enter your e password")
-})
+    const validationSchema = Yup.object({
+        email: Yup.string().email().required("Please enter your e mail s'il vous plait"),
+        password: Yup.string().required("Please enter your e password")
+    })
 
-const onSubmit = (values) => {
-console.log(values);
-}
+    const onSubmit = (values) => {
+        console.log(values);
+    }
 
-const formik = useFormik({
-    initialValues,validationSchema,onSubmit
-})
+    const formik = useFormik({
+        initialValues, validationSchema, onSubmit
+    })
 
 
 
@@ -42,12 +42,12 @@ const formik = useFormik({
                             <Form noValidate onSubmit={formik.handleSubmit}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Email address</Form.Label>
-                                    <Form.Control type="email" 
-                                    {...formik.getFieldProps("email")}
-                                    isInvalid={!!formik.errors.email}
-                                     />
+                                    <Form.Control type="email"
+                                        {...formik.getFieldProps("email")}
+                                        isInvalid={!!formik.errors.email}
+                                    />
                                     <Form.Control.Feedback type="invalid">
-                                     {formik.errors.email}
+                                        {formik.errors.email}
                                     </Form.Control.Feedback>
 
                                 </Form.Group>
@@ -55,20 +55,22 @@ const formik = useFormik({
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control type="password"
-                                    
-                                     {...formik.getFieldProps("password")}
-                                    isInvalid={!!formik.errors.password}
+
+                                        {...formik.getFieldProps("password")}
+                                        isInvalid={!!formik.errors.password}
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                    {formik.errors.password}
+                                        {formik.errors.password}
                                     </Form.Control.Feedback>
                                 </Form.Group>
+                                <div style={{display: 'flex', justifyContent: 'space-between' ,alignItem:"center" }}>
+                                    <Button variant="primary" type="submit" disabled={loading}>
+                                        {loading && <Spinner animation="border" size="sm" />}
+                                        Login
+                                    </Button>
+                                    <Link to="/register"> Create new user </Link>
+                                </div>
 
-                                <Button variant="primary" type="submit" disabled={loading}>
-                                    {loading &&  <Spinner animation="border" size="sm" />}
-                                    Login
-                                </Button>
-                                <Link to="register"> Create new user </Link>
                             </Form>
                         </Card.Body>
                     </Card>
