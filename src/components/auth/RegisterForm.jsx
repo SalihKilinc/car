@@ -3,11 +3,14 @@ import { Container, Row, Col, Card, Form, Button, Spinner } from "react-bootstra
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import MaskInput from "react-maskinput/lib";
+import { register } from '../../api/user-service';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
 
   const [loading, setLoading] = useState(false);
-
+const navigate = useNavigate();
 
 
   const initialValues = {
@@ -26,7 +29,8 @@ const RegisterForm = () => {
     firstName: Yup.string().required("Please enter your first name"),
     lastName: Yup.string().required("Please enter your last name"),
     email: Yup.string().email().required("Please enter your email"),
-    phoneNumber: Yup.string().required("Please enter your phone number"),
+    phoneNumber: Yup.string().required("Please enter your phone number")
+    .test("inludes_", "Please enter a valid number" , (value)=> value && !value.includes("_")),
     address: Yup.string().required("Please enter your address"),
     zipCode: Yup.string().required("Please enter your zip code"),
     password: Yup.string().required("Please enter your password"),
@@ -37,6 +41,17 @@ const RegisterForm = () => {
 
   const onSubmit = (values) => {
     console.log(values);
+
+    setLoading(true);
+    register(values).then(resp => {
+      setLoading(false);
+      toast ("You are registered successfully");
+      navigate("/login");
+    })
+    .catch(err => {
+       setLoading(false);
+      toast(err.response.data.message)
+    })
   }
 
   const formik = useFormik({
@@ -117,7 +132,7 @@ const RegisterForm = () => {
                 <hr />
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label>Email</Form.Label>
                   <Form.Control type="email"
 
                     {...formik.getFieldProps("email")}

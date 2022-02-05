@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
 
 import Footer from './components/common/Footer';
 import MenuBar from './components/common/MenuBar';
@@ -38,6 +39,7 @@ const App = () => {
 
       <Footer />
 
+<ToastContainer/>
 
     </BrowserRouter>
   )
