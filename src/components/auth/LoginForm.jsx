@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Card, Spinner } from "react-bootstra
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom"
-import { login } from '../../api/user-service';
+import { login ,getUser } from '../../api/user-service';
 import { toast } from 'react-toastify';
 
 const LoginForm = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
 
     const initialValues = {
         email: "",
-        password: ""
+        password: "",
     }
 
     const validationSchema = Yup.object({
@@ -23,14 +23,16 @@ const LoginForm = () => {
 
     const onSubmit = (values) => {
        setLoading(true);
-       login(values).then(resp => {
+
+       login(values).then(resp =>{
            localStorage.setItem("token" , resp.data.token);
 
            setLoading(false);
 
        })
-       .catch (err => {
-           toast(err.response.data.message);
+       .catch(err => {
+           toast (err.response.data.message);
+           setLoading(false);
        })
     }
 
