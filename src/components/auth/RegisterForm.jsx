@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Card, Form, Button, Spinner } from "react-bootstrap"
+import React, { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Spinner,
+} from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import MaskInput from "react-maskinput/lib";
-import { register } from '../../api/user-service';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { register } from "../../api/user-service";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-
   const [loading, setLoading] = useState(false);
-const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const initialValues = {
     firstName: "",
@@ -21,70 +27,70 @@ const navigate = useNavigate();
     address: "",
     zipCode: "",
     password: "",
-    confirmPassword: ""
-  }
+    confirmPassword: "",
+  };
 
   const validationSchema = Yup.object({
-
     firstName: Yup.string().required("Please enter your first name"),
     lastName: Yup.string().required("Please enter your last name"),
     email: Yup.string().email().required("Please enter your email"),
     phoneNumber: Yup.string().required("Please enter your phone number")
-    .test("inludes_", "Please enter a valid number" , (value)=> value && !value.includes("_")),
+      .test("includes_","Please enter a valid phone number", (value)=> value && !value.includes("_") ),
     address: Yup.string().required("Please enter your address"),
     zipCode: Yup.string().required("Please enter your zip code"),
     password: Yup.string().required("Please enter your password"),
     confirmPassword: Yup.string()
       .required("Please enter your password again")
-      .oneOf([Yup.ref("password")], "Password fields don`t match")
-  })
+      .oneOf([Yup.ref("password")], "Password fields don`t match"),
+  });
 
   const onSubmit = (values) => {
     console.log(values);
 
     setLoading(true);
-    register(values).then(resp => {
+
+    register(values).then(resp=>{
       setLoading(false);
-      toast ("You are registered successfully");
+      toast("You are registered successfully. ");
       navigate("/login");
     })
-    .catch(err => {
-       setLoading(false);
-      toast(err.response.data.message)
+    .catch(err=> {
+      console.log("Hata oluştu");
+      setLoading(false);
+      toast(err.response.data.message);
     })
-  }
+
+  };
 
   const formik = useFormik({
-    initialValues, validationSchema, onSubmit
-  })
-
-
-
-
+    initialValues,
+    validationSchema,
+    onSubmit,
+  });
 
   return (
     <Container>
       <Row>
-
         <Col md={{ span: 6, offset: 3 }} lg={{ span: 4, offset: 4 }}>
           <Card>
             <Card.Body>
-           < Form noValidate onSubmit={formik.handleSubmit}>
+              <Form noValidate onSubmit={formik.handleSubmit}>
                 <Form.Group className="mb-3">
                   <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text"
-                   {...formik.getFieldProps("firstName")}
-                   isInvalid={!!formik.errors.firstName}
+                  <Form.Control
+                    type="text"
+                    {...formik.getFieldProps("firstName")}
+                    isInvalid={!!formik.errors.firstName}
                   />
-                  <Form.Control.Feedback >
+                  <Form.Control.Feedback type="invalid">
                     {formik.errors.firstName}
                   </Form.Control.Feedback>
                 </Form.Group>
 
-
                 <Form.Group className="mb-3">
                   <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text"
+                  <Form.Control
+                    type="text"
                     {...formik.getFieldProps("lastName")}
                     isInvalid={!!formik.errors.lastName}
                   />
@@ -94,11 +100,12 @@ const navigate = useNavigate();
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>PhoneNumber</Form.Label>
-                  <Form.Control type="text"
-                     {...formik.getFieldProps("phoneNumber")}
-                     isInvalid={!!formik.errors.phoneNumber}
-                     as={MaskInput}
+                  <Form.Label>Phone Number</Form.Label>
+                  <Form.Control
+                    type="text"
+                    {...formik.getFieldProps("phoneNumber")}
+                    isInvalid={!!formik.errors.phoneNumber}
+                    as={MaskInput}
                     maskChar="_"
                     mask="(000) 000-0000"
                     alwaysShowMask
@@ -110,9 +117,10 @@ const navigate = useNavigate();
 
                 <Form.Group className="mb-3">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control type="text"
-                   {...formik.getFieldProps("address")}
-                   isInvalid={!!formik.errors.address}
+                  <Form.Control
+                    type="text"
+                    {...formik.getFieldProps("address")}
+                    isInvalid={!!formik.errors.address}
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.address}
@@ -120,21 +128,23 @@ const navigate = useNavigate();
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>ZipCode</Form.Label>
-                  <Form.Control type="text"
-                   {...formik.getFieldProps("zipCode")}
-                   isInvalid={!!formik.errors.zipCode}
+                  <Form.Label>Zip Code</Form.Label>
+                  <Form.Control
+                    type="text"
+                    {...formik.getFieldProps("zipCode")}
+                    isInvalid={!!formik.errors.zipCode}
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.zipCode}
                   </Form.Control.Feedback>
                 </Form.Group>
+
                 <hr />
 
                 <Form.Group className="mb-3">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email"
-
+                  <Form.Control
+                    type="email"
                     {...formik.getFieldProps("email")}
                     isInvalid={!!formik.errors.email}
                   />
@@ -143,11 +153,10 @@ const navigate = useNavigate();
                   </Form.Control.Feedback>
                 </Form.Group>
 
-
                 <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password"
-
+                  <Form.Control
+                    type="password"
                     {...formik.getFieldProps("password")}
                     isInvalid={!!formik.errors.password}
                   />
@@ -157,28 +166,27 @@ const navigate = useNavigate();
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Password(Confirm)</Form.Label>
-                  <Form.Control type="confirmPassword"
-
+                  <Form.Label>Password (Confirm)</Form.Label>
+                  <Form.Control
+                    type="password"
                     {...formik.getFieldProps("confirmPassword")}
                     isInvalid={!!formik.errors.confirmPassword}
                   />
-                 <Form.Control.Feedback type="invalid">
+                  <Form.Control.Feedback type="invalid">
                     {formik.errors.confirmPassword}
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                < Button variant="primary" type="submit" disabled={loading}>
-                  {loading && <Spinner animation="border" size="sm" />}
-                  Register
+                <Button variant="primary" type="submit" disabled={loading}>
+                  {loading && <Spinner animation="border" size="sm" />} Register
                 </Button>
               </Form>
             </Card.Body>
           </Card>
         </Col>
       </Row>
-    </Container >
-  )
+    </Container>
+  );
 };
 
 export default RegisterForm;
