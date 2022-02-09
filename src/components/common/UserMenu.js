@@ -21,6 +21,9 @@ alirtify.confirm(
         dispatchUser(logout());
         localStorage.removeItem("token");
 
+    },
+    () => {
+console.log("canceled");
     }
 )}
 

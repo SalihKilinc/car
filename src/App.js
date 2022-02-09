@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ServicesPage from "./pages/ServicesPage";
+import ProfilePage from "./pages/user/ProfilePage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <TopBar />
       <MenuBar />
       <Routes>
+      <Route path="/profile" element={<ProfilePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />

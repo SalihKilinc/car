@@ -16,8 +16,15 @@ const getUser = () => {
   return axios.get(`${API_URL}user`, {headers: autHeader()});
 }
 
+const updateUser = (user) => {
+  return axios.put(`${API_URL}user` , user , {headers: autHeader()})
+}
+
+
+
 export {
     login,
     register,
-    getUser
-};
+    getUser,
+    updateUser
+  }
