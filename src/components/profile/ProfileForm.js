@@ -36,6 +36,8 @@ const ProfileForm = ({ user }) => {
 
   const onSubmit = (values) => {
     console.log(values);
+delete values ["roles"];
+
     setLoading(true);
     updateUser(values).then(resp => {
 toast("Your profile update successefully");

@@ -20,11 +20,15 @@ const updateUser = (user) => {
   return axios.put(`${API_URL}user` , user , {headers: autHeader()})
 }
 
+const updatePassword = (credentials) => {
+  return axios.patch(`${API_URL}user` , credentials , {headers: autHeader()})
+}
 
 
 export {
     login,
     register,
     getUser,
-    updateUser
+    updateUser,
+    updatePassword 
   }

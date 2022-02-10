@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { Form, Button, Spinner } from "react-bootstrap";
+import { updatePassword } from "../../api/user-service";
 
 const PasswordForm = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,16 @@ const PasswordForm = () => {
   });
 
   const onSubmit = (values) => {
-    
+    setLoading(true);
+    updatePassword(values).then(response => {
+      toast("Your password has been updated.")
+      setLoading(false);
+    })
+
+    .catch(err => {
+      toast("An error has occurred")
+      setLoading(false);
+    })
   };
 
   const formik = useFormik({
