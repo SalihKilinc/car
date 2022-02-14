@@ -8,32 +8,32 @@ import MenuBar from "./components/common/MenuBar";
 import TopBar from "./components/common/TopBar";
 import CustomRoutes from "./router/CustomRoutes";
 import { loginSuccess } from "./store/user/userActions";
-import {useStore} from "./store";
+import { useStore } from "./store";
 
 
 const App = () => {
 
-  const {dispatchUser} = useStore();
+  const { dispatchUser } = useStore();
 
-const loadData = async () => {
-  
-  try {
+  const loadData = async () => {
 
-    const respUser = await getUser();
-    if(respUser.status !== 200 )throw ("An error occurred while loading");
-    
-    dispatchUser(loginSuccess (respUser.data));
-  } catch (error) {
-    console.log(error);
+    try {
+
+      const respUser = await getUser();
+      if (respUser.status !== 200) throw ("An error occurred while loading");
+
+      dispatchUser(loginSuccess(respUser.data));
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
 
 
 
-useEffect(() => {
+  useEffect(() => {
 
-  loadData();
-},[])
+    loadData();
+  }, [])
 
 
 
@@ -42,10 +42,10 @@ useEffect(() => {
     <BrowserRouter>
       <TopBar />
       <MenuBar />
-      <CustomRoutes/>
-     
+      <CustomRoutes />
+
       <Footer />
-      <ToastContainer/>
+      <ToastContainer />
     </BrowserRouter>
   );
 };

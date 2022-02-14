@@ -1,6 +1,11 @@
-import React from 'react';
+import React ,{useReducer} from 'react';
 import {userInitialState} from "./user/userInitialState";
 import {userReducer} from "./user/userReducer";
+import {reservationInitialState} from "./reservation/reservationInitialState";
+import {reservationReducer} from "./reservation/reservationReducer";
+import { vehiclesInitialState } from './vehicles/vehiclesInitialState';
+import {vehiclesReducer} from "./vehicles/vehiclesReducer";
+
 
 /* Merkezi state olusturuldu */
 const Store = React.createContext();
@@ -13,9 +18,12 @@ export const useStore = () => React.useContext(Store);
 
 export const StoreProvider=({children}) =>{
 const [userState , dispatchUser] = React.useReducer(userReducer , userInitialState);
+const [reservationState , dispatchReservation] = useReducer(reservationReducer , reservationInitialState);
+const [vehiclesState , dispatchVehicle] = useReducer(vehiclesReducer , vehiclesInitialState);
 
 return(
-    <Store.Provider value={{userState , dispatchUser}}> 
+    <Store.Provider value={{userState , dispatchUser , reservationState ,
+        dispatchVehicle,  dispatchReservation ,vehiclesState}}> 
         {children}
     </Store.Provider>
 )
