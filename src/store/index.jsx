@@ -19,11 +19,11 @@ export const useStore = () => React.useContext(Store);
 export const StoreProvider=({children}) =>{
 const [userState , dispatchUser] = React.useReducer(userReducer , userInitialState);
 const [reservationState , dispatchReservation] = useReducer(reservationReducer , reservationInitialState);
-const [vehiclesState , dispatchVehicle] = useReducer(vehiclesReducer , vehiclesInitialState);
+const [vehiclesState , dispatchVehicles] = useReducer(vehiclesReducer , vehiclesInitialState);
 
 return(
     <Store.Provider value={{userState , dispatchUser , reservationState ,
-        dispatchVehicle,  dispatchReservation ,vehiclesState}}> 
+        dispatchVehicles,  dispatchReservation ,vehiclesState}}> 
         {children}
     </Store.Provider>
 )
